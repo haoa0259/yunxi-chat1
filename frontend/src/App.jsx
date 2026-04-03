@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { Analytics } from '@vercel/analytics/react';
 
 const API = "https://yunxi-chat1.up.railway.app";
 const socket = io(API);
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/chat/service" element={user ? <ChatPage /> : <Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
